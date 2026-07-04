@@ -1,0 +1,111 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <defs>
+
+    <!-- Upper-left facet: lit from top, darker toward girdle -->
+    <linearGradient id="facetUL" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#e8c48a"/>
+      <stop offset="100%" stop-color="#9a6830"/>
+    </linearGradient>
+
+    <!-- Upper-right facet: brightest, primary light catch -->
+    <linearGradient id="facetUR" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#f5dfa0"/>
+      <stop offset="100%" stop-color="#c4944f"/>
+    </linearGradient>
+
+    <!-- Lower-left facet: in shadow -->
+    <linearGradient id="facetLL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#a07038"/>
+      <stop offset="100%" stop-color="#5a3410"/>
+    </linearGradient>
+
+    <!-- Lower-right facet: mid-tone, slight warmth -->
+    <linearGradient id="facetLR" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#c4944f"/>
+      <stop offset="100%" stop-color="#7a4e22"/>
+    </linearGradient>
+
+    <!-- Shimmer on upper-right only -->
+    <linearGradient id="shimmer" x1="0.2" y1="0" x2="1" y2="0.8">
+      <stop offset="0%"   stop-color="#fafafa" stop-opacity="0.22"/>
+      <stop offset="60%"  stop-color="#fafafa" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#fafafa" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#e8c48a" stop-opacity="0.9"/>
+      <stop offset="50%"  stop-color="#dbab66" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#c4944f" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <linearGradient id="ringGrad2" x1="1" y1="1" x2="0" y2="0">
+      <stop offset="0%"   stop-color="#e8c48a" stop-opacity="0.5"/>
+      <stop offset="50%"  stop-color="#dbab66" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#c4944f" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#dbab66" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#dbab66" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+  </defs>
+
+  <!-- Ambient glow -->
+  <circle cx="200" cy="200" r="110" fill="url(#glow)" filter="url(#blur)"/>
+
+  <!-- Outer rings -->
+  <circle cx="200" cy="200" r="145" stroke="url(#ringGrad)"  stroke-width="1"   fill="none"/>
+  <circle cx="200" cy="200" r="138" stroke="url(#ringGrad2)" stroke-width="0.5" fill="none"/>
+
+  <!-- Cardinal tick marks -->
+  <g stroke="#dbab66" stroke-width="1.2" opacity="0.55">
+    <line x1="200" y1="50"  x2="200" y2="62"/>
+    <line x1="200" y1="338" x2="200" y2="350"/>
+    <line x1="50"  y1="200" x2="62"  y2="200"/>
+    <line x1="338" y1="200" x2="350" y2="200"/>
+  </g>
+
+  <!-- Upper-left facet -->
+  <polygon points="200,90 136,195 200,168"
+           fill="url(#facetUL)"/>
+
+  <!-- Upper-right facet -->
+  <polygon points="200,90 200,168 264,195"
+           fill="url(#facetUR)"/>
+
+  <!-- Lower-left facet -->
+  <polygon points="136,195 200,168 200,310"
+           fill="url(#facetLL)"/>
+
+  <!-- Lower-right facet -->
+  <polygon points="200,168 264,195 200,310"
+           fill="url(#facetLR)"/>
+
+  <!-- Specular shimmer on upper-right -->
+  <polygon points="200,90 200,168 264,195"
+           fill="url(#shimmer)"/>
+
+  <!-- Edge lines -->
+  <g stroke="#e8c48a" stroke-width="0.7" stroke-linejoin="round" opacity="0.45" fill="none">
+    <polygon points="200,90 264,195 200,310 136,195"/>
+    <line x1="200" y1="90"  x2="200" y2="168"/>
+    <line x1="136" y1="195" x2="264" y2="195"/>
+  </g>
+
+  <!-- Top apex dot -->
+  <circle cx="200" cy="90" r="2.5" fill="#e8c48a" opacity="0.8" filter="url(#softGlow)"/>
+
+</svg>
