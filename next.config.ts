@@ -11,9 +11,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  turbopack: {
-    root: '/Users/harsharavi/Documents/consulting.com'
-  }
 };
 
 export default nextConfig;
